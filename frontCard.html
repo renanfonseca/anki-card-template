@@ -1,0 +1,43 @@
+<div class="container frontCard">
+	
+	<div class="row" style="align-items: center;">
+		<div class="palavra">Pergunta</div>		
+	</div>
+
+	<div class="row" style="margin-top:5px; align-items:justify;">
+		<span>{{Pergunta}}<span>
+	</div>
+
+
+	<div class="hr-frontCard"><hr></div>
+	<div class="labels-and-decks">
+		<div class="deckName"><span style="font-size:0.600rem;">{{Subdeck}}</span></div>
+		<div class="tagName">
+			<span id="tagNameSpan" class="tagNameSpan" style="font-size:0.469rem;">{{Tags}}</span>
+		</div>
+	</div>
+	
+</div>
+
+
+<script>
+var elTagNameSpan = document.getElementById("tagNameSpan");
+
+var position = elTagNameSpan.innerText.search("::");
+var mainTagName = elTagNameSpan.innerText.substring(0, position);
+
+var array = elTagNameSpan.innerText.replaceAll(mainTagName,"");
+array = array.replaceAll("::","; ");
+array = array.replaceAll("_"," ");
+array = array.replaceAll(" ;",";");
+
+array = mainTagName.replaceAll("_"," ") + array;
+
+array = array.split(";");
+
+array = [... new Set(array)];
+
+//elTagNameSpan.innerHTML = mainTagName.replaceAll("_"," ") + array;
+elTagNameSpan.innerHTML = array;
+
+</script>
